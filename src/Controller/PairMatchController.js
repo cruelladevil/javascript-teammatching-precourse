@@ -1,4 +1,5 @@
 const InputView = require('../View/InputView');
+const OutputView = require('../View/OutputView');
 
 const PairMatchController = {
   run() {
@@ -21,7 +22,7 @@ const PairMatchController = {
   },
 
   createPairMatch() {
-    console.log('페어 매칭');
+    OutputView.printCourseAndMission();
   },
 
   searchPairMatch() {
