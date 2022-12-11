@@ -11,6 +11,14 @@ const ViewController = {
     }
     return view;
   },
+
+  pareView(pareObj) {
+    let view = "";
+    for (const key in pareObj) {
+      view += key + " : " + pareObj[key] + "\n";
+    }
+    return view;
+  },
 };
 
 module.exports = ViewController;
