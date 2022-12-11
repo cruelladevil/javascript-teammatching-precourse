@@ -11,6 +11,8 @@ class MatchingModel {
     this.#totalCrews = [];
   }
 
+  getUserInput(input) {}
+
   buildMatchingResult(slicedFairs) {
     return slicedFairs.map((ele) =>
       ele.map((index) => this.#totalCrews[index].crew.getCrewInfo().name)
@@ -32,7 +34,6 @@ class MatchingModel {
       for (let i = 0; i < ele.length; i += 1) this.addPairList(i, ele);
     });
 
-    console.log(`my pair list : ${this.#totalCrews[0].crew.getPairList()}`);
     return this.buildMatchingResult(slicedFairs);
   }
 
