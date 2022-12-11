@@ -23,24 +23,29 @@ class PareMatching {
     while (index < this.#frontendCrews.length - 1) {
       const currentCrew = this.#frontendCrews[index];
       const nextCrew = this.#frontendCrews[index + 1];
-      if (!hasMatchedThisLevel(currentCrew, nextCrew, level))
-        matchingThisLevel(currentCrew, nextCrew, level);
-      if (hasMatchedThisLevel(currentCrew, nextCrew, level)) {
+      if (!this.hasMatchedThisLevel(currentCrew, nextCrew, level))
+        this.matchingThisLevel(currentCrew, nextCrew, level);
+      if (this.hasMatchedThisLevel(currentCrew, nextCrew, level)) {
       }
-      count += 2;
+      index += 2;
     }
+    return this;
   }
 
   hasMatchedThisLevel(cur, next, level) {
     const history = cur.getMatchedRecord(level);
-    if (history.include(next.getName())) return true;
-    if (!history.include(next.getName())) return false;
+    if (history.includes(next.getName())) return true;
+    if (!history.includes(next.getName())) return false;
   }
 
   matchingThisLevel(cur, next, level) {
-    cur.matching(next.getName(), level);
-    next.matching(cur.getName(), level);
+    cur.matching(level, next.getName());
+    next.matching(level, cur.getName());
     this.#pare[cur.getName()] = next.getName();
+  }
+
+  getMyPare() {
+    return this.#pare;
   }
 }
 
