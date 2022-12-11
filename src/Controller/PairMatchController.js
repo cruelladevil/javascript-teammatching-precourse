@@ -23,6 +23,7 @@ const PairMatchController = {
 
   createPairMatch() {
     OutputView.printCourseAndMission();
+    InputView.readCourseLevelMission((input) => {});
   },
 
   searchPairMatch() {

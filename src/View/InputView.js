@@ -5,6 +5,10 @@ const InputView = {
   readFeature(callback) {
     Console.readLine(INPUT.FEATURE, callback);
   },
+
+  readCourseLevelMission(callback) {
+    Console.readLine(INPUT.COURSE_LEVEL_MISSION, callback);
+  },
 };
 
 module.exports = InputView;
