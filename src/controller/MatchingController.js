@@ -58,12 +58,12 @@ class MatchingController {
   }
 
   matchingStart(answer) {
-    const [course, level, mission] = answer.split(" ,");
+    const [course, level, mission] = answer.split(", ");
     const pare = this.getMatchingResult(course, level, mission);
     this.matchingPrint(pare);
   }
 
-  getMatchingResult(course, level) {
+  getMatchingResult(course, level, mission) {
     if (course === FRONTEND) this.#pareMatching.frontMatching(level);
     if (course === BACKEND) this.#pareMatching.backMatching(level);
     // mission 에 매칭 이력 넣어야 한다.
