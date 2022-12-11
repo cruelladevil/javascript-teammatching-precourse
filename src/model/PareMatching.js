@@ -1,6 +1,5 @@
 const { FRONTEND, BACKEND } = require("../Course");
 const { shuffle } = require("../lib/RandomShuffle");
-const Level = require("../Level");
 
 class PareMatching {
   #frontendCrews;
@@ -18,8 +17,13 @@ class PareMatching {
     return this;
   }
 
+  initPare() {
+    this.#pare = {};
+    return { index: 0 };
+  }
+
   frontMatching(level) {
-    let index = 0;
+    let { index } = this.initPare();
     while (index < this.#frontendCrews.length - 1) {
       const currentCrew = this.#frontendCrews[index];
       const nextCrew = this.#frontendCrews[index + 1];
@@ -29,7 +33,19 @@ class PareMatching {
       }
       index += 2;
     }
-    return this;
+  }
+
+  backMatching(level) {
+    let { index } = this.initPare();
+    while (index < this.#backendCrews.length - 1) {
+      const currentCrew = this.#backendCrews[index];
+      const nextCrew = this.#backendCrews[index + 1];
+      if (!this.hasMatchedThisLevel(currentCrew, nextCrew, level))
+        this.matchingThisLevel(currentCrew, nextCrew, level);
+      if (this.hasMatchedThisLevel(currentCrew, nextCrew, level)) {
+      }
+      index += 2;
+    }
   }
 
   hasMatchedThisLevel(cur, next, level) {
