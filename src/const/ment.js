@@ -1,4 +1,4 @@
-const PROCESS = {
+const MENT = {
   SELECT: {
     FUNC: "기능을 선택하세요.\n1. 페어 매칭\n2. 페어 조회\n3. 페어 초기화\nQ. 종료\n",
     COURSE_MISSION:
@@ -20,3 +20,5 @@ const PROCESS = {
 
   INIT: "초기화 되었습니다.\n",
 };
+
+module.exports = MENT;
