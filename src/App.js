@@ -1,8 +1,11 @@
+const PairMatch = require('./Model/PairMatch');
 const PairMatchController = require('./Controller/PairMatchController');
 
 class App {
   play() {
-    PairMatchController.run();
+    const pairMatch = new PairMatch();
+
+    PairMatchController.run(pairMatch);
   }
 }
 

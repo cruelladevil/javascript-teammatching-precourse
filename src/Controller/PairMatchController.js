@@ -1,29 +1,39 @@
 const InputView = require('../View/InputView');
 const OutputView = require('../View/OutputView');
+const CrewFileSystem = require('./CrewFileSystem');
+const PairViewController = require('./PairViewController');
 
 const PairMatchController = {
-  run() {
-    PairMatchController.readFeature();
+  run(pairMatch) {
+    PairMatchController.readFeature(pairMatch);
   },
 
-  readFeature() {
+  readFeature(pairMatch) {
     InputView.readFeature((input) => {
       switch (input) {
         case '1':
-          return PairMatchController.createPairMatch();
+          return PairMatchController.createPairMatch(pairMatch);
         case '2':
-          return PairMatchController.searchPairMatch();
+          return PairMatchController.searchPairMatch(pairMatch);
         case '3':
-          return PairMatchController.initializePairMatch();
+          return PairMatchController.initializePairMatch(pairMatch);
         case 'Q':
           return PairMatchController.end();
       }
     });
   },
 
-  createPairMatch() {
+  createPairMatch(pairMatch) {
     OutputView.printCourseAndMission();
-    InputView.readCourseLevelMission((input) => {});
+    InputView.readCourseLevelMission((input) => {
+      const [course, level, mission] = input.split(', ');
+
+      CrewFileSystem.readCrewFile(course, (crewNames) => {
+        pairMatch.createPairMatch(course, crewNames);
+        const pairView = PairViewController.buildPairView(pairMatch.getPairs());
+        OutputView.printPairMatchResult(pairView);
+      });
+    });
   },
 
   searchPairMatch() {

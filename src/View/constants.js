@@ -15,6 +15,7 @@ const COURSE_AND_MISSION = Object.freeze({
 
 const OUTPUT = Object.freeze({
   COURSE_AND_MISSION,
+  PAIR_MATCH_RESULT: '페어 매칭 결과입니다.',
 });
 
 module.exports = { INPUT, OUTPUT };

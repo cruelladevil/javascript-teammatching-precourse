@@ -32,6 +32,10 @@ class PairMatch {
     const lastCrew = this.#crews[this.#crews.length - 1];
     lastPair.push(lastCrew);
   }
+
+  getPairs() {
+    return this.#pairs;
+  }
 }
 
 module.exports = PairMatch;
