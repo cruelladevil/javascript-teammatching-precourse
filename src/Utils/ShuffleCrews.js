@@ -1,9 +1,9 @@
 const { Random } = require("@woowacourse/mission-utils");
 
-const SuffleCrews = {
-  suffle(crewNames) {
+const ShuffleCrews = {
+  shuffle(crewNames) {
     return Random.shuffle(crewNames);
   },
 };
 
-module.exports = SuffleCrews;
+module.exports = ShuffleCrews;

@@ -12,10 +12,15 @@ const FilerReader = {
   },
 
   getCrewNames() {
-    const backendCrewNames = onReadFile(dirBackend);
-    const frontendCrewNames = onReadFile(dirFrontend);
+    const backendCrewNames = this.onReadFile(dirBackend)
+      .replace("\n", "")
+      .split(" ");
+    const frontendCrewNames = this.onReadFile(dirFrontend)
+      .replace("\n", "")
+      .split(" ");
 
     return { backendCrewNames, frontendCrewNames };
   },
 };
+
 module.exports = FilerReader;

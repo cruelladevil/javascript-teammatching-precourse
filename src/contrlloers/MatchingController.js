@@ -1,8 +1,13 @@
 const InputView = require("../InputView");
 const OutputView = require("../OutputView");
+const ViewModel = require("../models/ViewModel");
 
 class MatchingController {
-  constructor() {}
+  #viewModel;
+
+  constructor() {
+    this.#viewModel = new ViewModel();
+  }
 
   onInputRecrusive(inputFunc, callback) {
     inputFunc((input) => {
@@ -36,8 +41,12 @@ class MatchingController {
   }
 
   handleSelectMaching(input) {
-    console.log(input);
-    console.log("매칭!!!");
+    const inputs = input.split(", ");
+    const buildedMatchingResult = this.#viewModel.buildMatchingResultView(
+      inputs[0]
+    );
+
+    OutputView.printMatchResult(buildedMatchingResult);
   }
 }
 

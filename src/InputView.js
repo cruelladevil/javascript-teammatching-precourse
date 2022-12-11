@@ -1,6 +1,6 @@
 const { readLine } = require("./utils/Utils");
 
-const Querys = {
+const QUERYS = {
   SELECT: `기능을 선택하세요.
 1. 페어 매칭
 2. 페어 조회
@@ -19,15 +19,21 @@ Q. 종료
 과정, 레벨, 미션을 선택하세요.
 ex) 백엔드, 레벨1, 자동차경주
 `,
+  ALREADY_MATCHING:
+    "매칭 정보가 있습니다. 다시 매칭하시겠습니까?\n네 | 아니오\n",
 };
 
 const InputView = {
   readSelectValue(callback) {
-    readLine(Querys.SELECT, callback);
+    readLine(QUERYS.SELECT, callback);
   },
 
   readSelectMaching(callback) {
-    readLine(Querys.SELECT_MATCHING, callback);
+    readLine(QUERYS.SELECT_MATCHING, callback);
+  },
+
+  readAlreadyMatchingInfo(callback) {
+    readLine(QUERYS.ALREADY_MATCHING, callback);
   },
 };
 
