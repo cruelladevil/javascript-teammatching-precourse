@@ -11,10 +11,10 @@ class PareMatching {
     this.#backendCrews = backCrews;
   }
 
-  shuffleCrews(course) {
+  shuffleCrews(course, level) {
     if (course === FRONTEND) this.#frontendCrews = shuffle(this.#frontendCrews);
     if (course === BACKEND) this.#backendCrews = shuffle(this.#backendCrews);
-    return this;
+    this.frontMatching(course, level);
   }
 
   initPare() {
@@ -22,15 +22,15 @@ class PareMatching {
     return { index: 0 };
   }
 
-  frontMatching(level) {
+  frontMatching(course, level) {
     let { index } = this.initPare();
     while (index < this.#frontendCrews.length - 1) {
       const currentCrew = this.#frontendCrews[index];
       const nextCrew = this.#frontendCrews[index + 1];
       if (!this.hasMatchedThisLevel(currentCrew, nextCrew, level))
         this.matchingThisLevel(currentCrew, nextCrew, level);
-      if (this.hasMatchedThisLevel(currentCrew, nextCrew, level)) {
-      }
+      if (this.hasMatchedThisLevel(currentCrew, nextCrew, level))
+        this.shuffleCrews(course);
       index += 2;
     }
   }
