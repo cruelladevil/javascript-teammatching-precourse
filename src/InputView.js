@@ -1,7 +1,7 @@
-const { readLine } = require("./utils/Utils");
+const { readLine, close } = require("./utils/Utils");
 
 const QUERYS = {
-  SELECT: `기능을 선택하세요.
+  SELECT: `\n기능을 선택하세요.
 1. 페어 매칭
 2. 페어 조회
 3. 페어 초기화
@@ -34,6 +34,10 @@ const InputView = {
 
   readAlreadyMatchingInfo(callback) {
     readLine(QUERYS.ALREADY_MATCHING, callback);
+  },
+
+  end() {
+    close();
   },
 };
 

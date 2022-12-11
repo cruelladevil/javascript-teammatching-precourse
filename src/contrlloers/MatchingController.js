@@ -36,8 +36,10 @@ class MatchingController {
   handleSelectValue(input) {
     console.log(input);
 
-    if (Number(input) == 1)
-      this.onReadSelectMatching(this.handleSelectMaching.bind(this));
+    if (Number(input) === 1) this.onReadSelectMatching();
+    if (Number(input) === 2) this.onReadSelectMatching();
+    if (Number(input) === 3) this.onReadSelectMatching();
+    if (input == "Q") InputView.end();
   }
 
   handleSelectMaching(input) {
@@ -47,6 +49,7 @@ class MatchingController {
     );
 
     OutputView.printMatchResult(buildedMatchingResult);
+    this.onReadSelectValue();
   }
 }
 

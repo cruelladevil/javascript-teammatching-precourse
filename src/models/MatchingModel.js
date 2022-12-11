@@ -29,17 +29,19 @@ class MatchingModel {
     const slicedFairs = this.sliceFairs(shuffledFairs);
 
     slicedFairs.forEach((ele) => {
-      for (let i = 0; i < ele.length; i += 1) {
-        for (let j = 0; j < ele.length; j += 1) {
-          if (i == j) continue;
-          //   console.log(ele[i]);
-          this.#totalCrews[ele[i]].crew.addPairList(ele[j]);
-        }
-      }
+      for (let i = 0; i < ele.length; i += 1) this.addPairList(i, ele);
     });
 
     console.log(`my pair list : ${this.#totalCrews[0].crew.getPairList()}`);
     return this.buildMatchingResult(slicedFairs);
+  }
+
+  addPairList(index, ele) {
+    for (let j = 0; j < ele.length; j += 1) {
+      if (index == j) continue;
+
+      this.#totalCrews[ele[index]].crew.addPairList(ele[j]);
+    }
   }
 
   sliceFairs(array) {
