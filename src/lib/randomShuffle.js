@@ -1,7 +1,7 @@
 const { Random } = require("@woowacourse/mission-utils");
 
 const RandomShuffle = {
-  Shuffle(array) {
+  shuffle(array) {
     return Random.shuffle(array);
   },
 };
