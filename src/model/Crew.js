@@ -11,3 +11,5 @@ class Crew {
     return this.#name;
   }
 }
+
+module.exports = Crew;
