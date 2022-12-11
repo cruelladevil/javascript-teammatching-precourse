@@ -11,15 +11,20 @@ const OutputView = {
   },
 
   printResult(pareList) {
-    Console.print(MENT.RESULT);
+    Console.print(MENT.RESULT.PAREMATCHING);
     Console.print(pareList);
   },
 
-  printCourseMission(missionList) {
+  printCourseMission(course, missionList) {
     Console.print(MENT.UI.DIVISION);
-    Console.print(MENT.UI.COURSE);
+    Console.print(MENT.UI.COURSE + course);
+    Console.print(MENT.UI.MISSION);
     Console.print(missionList);
     Console.print(MENT.UI.DIVISION);
+  },
+
+  printClose() {
+    Console.close();
   },
 };
 
